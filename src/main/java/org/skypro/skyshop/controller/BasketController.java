@@ -15,13 +15,13 @@ public class BasketController {
         this.basketService = basketService;
     }
 
-    @GetMapping("/basket/{id}")
+    @PostMapping("/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id) {
         basketService.addProduct(id);
         return "Продукт успешно добавлен";
     }
 
-    @GetMapping("/basket")
+    @PostMapping("/basket")
     public UserBasket getUserBasket() {
         return basketService.getUserBasket();
     }

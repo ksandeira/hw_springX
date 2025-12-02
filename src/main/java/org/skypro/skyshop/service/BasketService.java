@@ -23,8 +23,10 @@ public class BasketService {
         this.storageService = storageService;
     }
 
-    public void addProduct(UUID id) {
-        storageService.getProductById(id).orElseThrow(() -> new NoSuchProductException("Product not found with id: " + id));
+    public void addProduct(UUID productId) {
+        Product product = storageService.getProductById(productId).orElseThrow(() -> new NoSuchProductException("Product not found with id: " + productId));
+
+        productBasket.addProduct(productId);
     }
 
     public UserBasket getUserBasket() {
@@ -37,4 +39,5 @@ public class BasketService {
 
         return new UserBasket(items);
     }
+
 }
